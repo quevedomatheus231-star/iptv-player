@@ -1,119 +1,76 @@
-:root {
-  scroll-behavior: smooth;
-  display: grid;
-  place-items: center;
-  background-color: #303030;
-}
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#111827">
+  <title>Canais Grátis</title>
+  <link rel="icon" href="favicon.png">
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+</head>
+<body>
+  <header class="topo">
+    <div>
+      <span class="eyebrow">IPTV PLAYER</span>
+      <h1>Canais Grátis</h1>
+    </div>
+    <button id="btnCustom" class="btn-secundario" type="button">+ URL</button>
+  </header>
 
-.sk-cube-grid {
-  align-self: center;
-  width: 8rem;
-  height: 8rem;
-  margin: 100px auto;
-}
+  <main class="container">
+    <section class="hero">
+      <div>
+        <h2>Escolha um canal</h2>
+        <p>Toque em um canal para abrir o player.</p>
+      </div>
+      <div class="busca-wrap">
+        <input id="busca" type="search" placeholder="Buscar canal..." autocomplete="off">
+      </div>
+    </section>
 
-.sk-cube-grid .sk-cube {
-  width: 33%;
-  height: 33%;
-  background-color: #fccfa8;
-  float: left;
-  -webkit-animation: sk-cubeGridScaleDelay 1.3s infinite ease-in-out;
-  animation: sk-cubeGridScaleDelay 1.3s infinite ease-in-out;
-}
+    <nav id="categorias" class="categorias" aria-label="Categorias"></nav>
 
-.sk-cube-grid .sk-cube1 {
-  -webkit-animation-delay: 0.2s;
-  animation-delay: 0.2s;
-}
+    <section>
+      <div id="listaCanais" class="grid-canais"></div>
+      <div id="vazio" class="vazio" hidden>Nenhum canal encontrado.</div>
+    </section>
+  </main>
 
-.sk-cube-grid .sk-cube2 {
-  -webkit-animation-delay: 0.3s;
-  animation-delay: 0.3s;
-}
+  <div id="modalPlayer" class="modal" hidden>
+    <div class="modal-card player-card">
+      <div class="modal-topo">
+        <div>
+          <span class="eyebrow">AO VIVO</span>
+          <h3 id="playerNome">Canal</h3>
+        </div>
+        <button id="fecharPlayer" class="icon-btn" type="button" aria-label="Fechar">✕</button>
+      </div>
 
-.sk-cube-grid .sk-cube3 {
-  -webkit-animation-delay: 0.4s;
-  animation-delay: 0.4s;
-}
+      <div class="video-wrap">
+        <video id="video" controls playsinline autoplay></video>
+      </div>
 
-.sk-cube-grid .sk-cube4 {
-  -webkit-animation-delay: 0.1s;
-  animation-delay: 0.1s;
-}
+      <p id="playerStatus" class="status">Carregando...</p>
+      <button id="tentarNovamente" class="btn-principal" type="button">Tentar novamente</button>
+    </div>
+  </div>
 
-.sk-cube-grid .sk-cube5 {
-  -webkit-animation-delay: 0.2s;
-  animation-delay: 0.2s;
-}
+  <div id="modalCustom" class="modal" hidden>
+    <div class="modal-card">
+      <div class="modal-topo">
+        <div>
+          <span class="eyebrow">PLAYER</span>
+          <h3>Abrir URL</h3>
+        </div>
+        <button id="fecharCustom" class="icon-btn" type="button" aria-label="Fechar">✕</button>
+      </div>
+      <label class="label" for="customUrl">Link HLS/M3U8</label>
+      <input id="customUrl" class="input" type="url" placeholder="https://exemplo.com/playlist.m3u8">
+      <button id="abrirCustom" class="btn-principal" type="button">Abrir no player</button>
+    </div>
+  </div>
 
-.sk-cube-grid .sk-cube6 {
-  -webkit-animation-delay: 0.3s;
-  animation-delay: 0.3s;
-}
-
-.sk-cube-grid .sk-cube7 {
-  -webkit-animation-delay: 0s;
-  animation-delay: 0s;
-}
-
-.sk-cube-grid .sk-cube8 {
-  -webkit-animation-delay: 0.1s;
-  animation-delay: 0.1s;
-}
-
-.sk-cube-grid .sk-cube9 {
-  -webkit-animation-delay: 0.2s;
-  animation-delay: 0.2s;
-}
-
-@-webkit-keyframes fadein {
-  from {
-    bottom: 0;
-    opacity: 0;
-  }
-
-  to {
-    bottom: 30px;
-    opacity: 1;
-  }
-}
-
-@keyframes fadein {
-  from {
-    bottom: 0;
-    opacity: 0;
-  }
-
-  to {
-    bottom: 30px;
-    opacity: 1;
-  }
-}
-
-@-webkit-keyframes sk-cubeGridScaleDelay {
-  0%,
-  70%,
-  100% {
-    -webkit-transform: scale3D(1, 1, 1);
-    transform: scale3D(1, 1, 1);
-  }
-
-  35% {
-    -webkit-transform: scale3D(0, 0, 1);
-    transform: scale3D(0, 0, 1);
-  }
-}
-
-@keyframes sk-cubeGridScaleDelay {
-  0%,
-  70%,
-  100% {
-    -webkit-transform: scale3D(1, 1, 1);
-    transform: scale3D(1, 1, 1);
-  }
-
-  35% {
-    -webkit-transform: scale3D(0, 0, 1);
-    transform: scale3D(0, 0, 1);
-  }
-}
+  <script src="app.js"></script>
+</body>
+</html>
