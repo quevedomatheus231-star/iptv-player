@@ -2,75 +2,61 @@
 <html lang="pt-BR">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-  <meta name="theme-color" content="#111827">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#0b1020">
   <title>Canais Grátis</title>
   <link rel="icon" href="favicon.png">
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css?v=3">
   <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
 </head>
 <body>
-  <header class="topo">
+  <header class="topbar">
     <div>
-      <span class="eyebrow">IPTV PLAYER</span>
+      <div class="eyebrow">IPTV PLAYER</div>
       <h1>Canais Grátis</h1>
     </div>
-    <button id="btnCustom" class="btn-secundario" type="button">+ URL</button>
+    <button id="btnCustom" class="btn btn-secondary">+ URL</button>
   </header>
 
-  <main class="container">
+  <main class="wrap">
     <section class="hero">
-      <div>
-        <h2>Escolha um canal</h2>
-        <p>Toque em um canal para abrir o player.</p>
-      </div>
-      <div class="busca-wrap">
-        <input id="busca" type="search" placeholder="Buscar canal..." autocomplete="off">
-      </div>
+      <h2>Escolha um canal</h2>
+      <p>Toque em um canal para abrir o player.</p>
+      <input id="busca" class="search" type="search" placeholder="Buscar canal...">
     </section>
 
-    <nav id="categorias" class="categorias" aria-label="Categorias"></nav>
-
-    <section>
-      <div id="listaCanais" class="grid-canais"></div>
-      <div id="vazio" class="vazio" hidden>Nenhum canal encontrado.</div>
-    </section>
+    <div id="categorias" class="chips"></div>
+    <div id="lista" class="grid"></div>
+    <div id="vazio" class="empty" hidden>Nenhum canal encontrado.</div>
   </main>
 
-  <div id="modalPlayer" class="modal" hidden>
-    <div class="modal-card player-card">
-      <div class="modal-topo">
+  <div id="playerModal" class="modal" hidden>
+    <div class="sheet">
+      <div class="sheet-head">
         <div>
-          <span class="eyebrow">AO VIVO</span>
+          <div class="eyebrow">AO VIVO</div>
           <h3 id="playerNome">Canal</h3>
         </div>
-        <button id="fecharPlayer" class="icon-btn" type="button" aria-label="Fechar">✕</button>
+        <button id="fecharPlayer" class="close">✕</button>
       </div>
-
-      <div class="video-wrap">
-        <video id="video" controls playsinline autoplay></video>
+      <div class="video-box">
+        <video id="video" controls playsinline></video>
       </div>
-
-      <p id="playerStatus" class="status">Carregando...</p>
-      <button id="tentarNovamente" class="btn-principal" type="button">Tentar novamente</button>
+      <p id="status" class="status"></p>
     </div>
   </div>
 
-  <div id="modalCustom" class="modal" hidden>
-    <div class="modal-card">
-      <div class="modal-topo">
-        <div>
-          <span class="eyebrow">PLAYER</span>
-          <h3>Abrir URL</h3>
-        </div>
-        <button id="fecharCustom" class="icon-btn" type="button" aria-label="Fechar">✕</button>
+  <div id="customModal" class="modal" hidden>
+    <div class="sheet">
+      <div class="sheet-head">
+        <h3>Abrir URL</h3>
+        <button id="fecharCustom" class="close">✕</button>
       </div>
-      <label class="label" for="customUrl">Link HLS/M3U8</label>
-      <input id="customUrl" class="input" type="url" placeholder="https://exemplo.com/playlist.m3u8">
-      <button id="abrirCustom" class="btn-principal" type="button">Abrir no player</button>
+      <input id="customUrl" class="search" placeholder="https://.../playlist.m3u8">
+      <button id="abrirCustom" class="btn btn-primary full">Abrir no player</button>
     </div>
   </div>
 
-  <script src="app.js"></script>
+  <script src="app.js?v=3"></script>
 </body>
 </html>
